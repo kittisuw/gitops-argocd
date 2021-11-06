@@ -20,6 +20,7 @@ $ kubectl get svc -n argocd
 ...
 argocd-server           ClusterIP   10.96.227.84     <none>        80/TCP,443/TCP               35h
 ...
+
 # Using minikube expose service port for access
 $ minikube service argocd-server -n argocd
 
