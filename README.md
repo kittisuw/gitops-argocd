@@ -11,7 +11,7 @@ $ kubectl config use-context minikube
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
-# Step 1 - Create Simple Node.js application for build tag push to image registry
+# Step 1 - Create Simple Node.js application for demo
 ```bash
 $ cd app
 #Buid an tag application
