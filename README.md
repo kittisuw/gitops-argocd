@@ -32,7 +32,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
-# Step 2 - Apply ArgoCR configulation file and view at ArgoCD application : myapp-argo-application
+# Step 2 - Apply ArgoCD configulation file and view at ArgoCD application : myapp-argo-application
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
