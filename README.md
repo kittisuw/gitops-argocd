@@ -7,6 +7,8 @@ $ minikube start
 $ kubectl config get-contexts
 #Set context to minikube
 $ kubectl config use-context minikube
+# clone project
+$ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 # Step 1 — Install ArgoCD
 ```bash
@@ -28,31 +30,48 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # you can change and delete init password
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
-
-# Basic Testing 
+# Step 2 - Apply ArgoCR configulation file
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
-$ git clone git@github.com:kittisuw/gitops-argocd.git
+$ cd gitops-argocd
 $ kubectl apply -f argo-cd/application.yaml
 # 3.Check Argo application : myapp-argo-application
-# 4.Test edit version to 1.0 or 1.1 or 1.2 and Check Argo application : myapp-argo-application
-vi dev/deployment.yaml 
+```
+# Step 3 - Testing and view behavior at ArgoCD
+```bash
+# 1.Test edit version to 1.0 or 1.1 or 1.2 and Check Argo application : myapp-argo-application
+vi deployments/deployment.yaml 
 ...
 image: kittisuw/argocd-app:1.1
 ...
-# 5.Test rename deployment name and Check Argo application : myapp-argo-application
+
+# 2.Test rename deployment name and Check Argo application : myapp-argo-application
 ...
-vi dev/deployment.yaml
+vi delployments/deployment.yaml
 ...
 metadata:
   name: myapp #Change to myapp-deployment
 ...
-# 6. Edit deployment replicas from 2 to 4 @cluster and Check Argo application : myapp-argo-application
-kubectl edit deploy myapp -n myapp
-```
 
-# Cleanup 
+# 3.Edit deployment replicas from 2 to 4 @cluster and Check Argo application : myapp-argo-application
+kubectl edit deploy myapp -n myapp
+...
+replicas: 2 #Change to 4
+...
+
+# 4. Edit selfHeal: false and try to edit replicas
+$ vi argo-cd/application.yaml
+...
+selfHeal: false
+...
+$ kubectl apply -f argocd/application.yaml
+$ k edit deploy myapp -n myapp
+...
+replicas: 2 #Change to 4
+...
+```
+# Cleanup
 ```bash
 #Delete Argocd config
 kubctl delete -f argo-cd/application.yaml
