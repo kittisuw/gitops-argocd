@@ -23,7 +23,7 @@ docker push kittisuw/argocd-app:1.0
 docker push kittisuw/argocd-app:1.1
 docker push kittisuw/argocd-app:1.2
 ```
-# Step 2 — Install ArgoCD to Kubernetes cluster
+# Step 2 — Install ArgoCD on Kubernetes cluster
 ```bash
 # Create namespace for install Argo
 $ kubectl create namespace argocd
