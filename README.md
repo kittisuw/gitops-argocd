@@ -10,6 +10,7 @@ $ kubectl config use-context minikube
 # clone project
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
+> Get started minikube https://minikube.sigs.k8s.io/docs/start/
 # Step 1 — Install ArgoCD
 ```bash
 # Create namespace for install Argo
