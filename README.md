@@ -11,6 +11,18 @@ $ kubectl config use-context minikube
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
+# Step x - Create Simple application for build tag push to image registry
+```bash
+$ cd app
+#Buid an tag application
+$ docker build . -t kittisuw/argocd-app:1.0
+$ docker build . -t kittisuw/argocd-app:1.1
+$ docker build . -t kittisuw/argocd-app:1.2
+#Push to image registry In this demo I using dockerhub
+docker push kittisuw/argocd-app:1.0
+docker push kittisuw/argocd-app:1.1
+docker push kittisuw/argocd-app:1.2
+```
 # Step 1 — Install ArgoCD to Kubernetes cluster
 ```bash
 # Create namespace for install Argo
