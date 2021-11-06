@@ -16,14 +16,12 @@ $ kubectl create namespace argocd
 # Install ArgoCD in k8s
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-# Get Argocd service name
+# Access ArgoCD UI
 $ kubectl get svc -n argocd
 ...
 argocd-server           ClusterIP   10.96.227.84     <none>        80/TCP,443/TCP               35h
 ...
-
-# Using minikube expose service port for access
-$ minikube service argocd-server -n argocd
+$ kubectl port-forward svc/argocd-server -n argocd 8080:443
 
 # login with admin user and below token (as in documentation):
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
@@ -33,7 +31,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 
 # Testing 
 ```bash
-# 1.Login ArgoCD https://127.0.0.1:8080
+# 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCR configulation file
 $ git clone git@repo.blockfint.com:dev-sec-ops/argocd/argocd-app-config.git
 $ kubectl apply -f application.yaml
