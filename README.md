@@ -30,7 +30,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # you can change and delete init password
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
-# Step 2 - Apply ArgoCR configulation file
+# Step 2 - Apply ArgoCR configulation file and view at ArgoCD application : myapp-argo-application
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
@@ -40,22 +40,22 @@ $ kubectl apply -f argo-cd/application.yaml
 ```
 # Step 3 - Testing and view behavior at ArgoCD
 ```bash
-# 1.Test edit version to 1.0 or 1.1 or 1.2 and Check Argo application : myapp-argo-application
-vi deployments/deployment.yaml 
+# 1.Test edit version
+$ vi deployments/deployment.yaml 
 ...
-image: kittisuw/argocd-app:1.1
+image: kittisuw/argocd-app:1.0 #Edit to 1.1 or 1.2
 ...
 
-# 2.Test rename deployment name and Check Argo application : myapp-argo-application
+# 2.Test rename deployment name
 ...
-vi delployments/deployment.yaml
+$ vi delployments/deployment.yaml
 ...
 metadata:
   name: myapp #Change to myapp-deployment
 ...
 
-# 3.Edit deployment replicas from 2 to 4 @cluster and Check Argo application : myapp-argo-application
-kubectl edit deploy myapp -n myapp
+# 3.Edit deployment replicas from 2 to 4 @cluster
+$ kubectl edit deploy myapp -n myapp
 ...
 replicas: 2 #Change to 4
 ...
