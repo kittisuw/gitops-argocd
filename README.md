@@ -19,9 +19,9 @@ $ docker build . -t kittisuw/argocd-app:1.0
 $ docker build . -t kittisuw/argocd-app:1.1
 $ docker build . -t kittisuw/argocd-app:1.2
 #Push to image registry In this demo I using dockerhub
-docker push kittisuw/argocd-app:1.0
-docker push kittisuw/argocd-app:1.1
-docker push kittisuw/argocd-app:1.2
+$ docker push kittisuw/argocd-app:1.0
+$ docker push kittisuw/argocd-app:1.1
+$ docker push kittisuw/argocd-app:1.2
 ```
 # Step 2 — Install ArgoCD on Kubernetes cluster
 ```bash
