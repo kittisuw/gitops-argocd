@@ -31,6 +31,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # you can change and delete init password
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
+> Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
 # Step 2 - Apply ArgoCR configulation file and view at ArgoCD application : myapp-argo-application
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
@@ -87,4 +88,3 @@ kubectl delete ns argocd --grace-period=0 --force
 #Stop minikube cluster
 minikube stop
 ```
-> Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
