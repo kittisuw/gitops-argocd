@@ -1,19 +1,13 @@
-FROM node:16
-
-# Create app directory
-WORKDIR /usr/src/app
-
-# Install app dependencies
-# A wildcard is used to ensure both package.json AND package-lock.json are copied
-# where available (npm@5+)
-COPY package*.json ./
-
+FROM node:10 as build
+MAINTAINER dhavaln
+LABEL description="This is a multi-stage NodeJS image"
+WORKDIR /src
+COPY package*.json .
 RUN npm install
-# If you are building your code for production
-# RUN npm ci --only=production
-
-# Bundle app source
 COPY . .
 
+FROM node:10-slim
+WORKDIR /src 
+COPY --from=build /src .
 EXPOSE 8080
-CMD [ "node", "server.js" ]
+CMD ["node", "index.js"]
