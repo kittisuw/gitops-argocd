@@ -64,7 +64,7 @@ replicas: 2 #Change to 4
 # 4. Edit selfHeal: false and try to edit replicas
 $ vi argo-cd/application.yaml
 ...
-selfHeal: false
+selfHeal: true #Change to false
 ...
 $ kubectl apply -f argocd/application.yaml
 $ k edit deploy myapp -n myapp
