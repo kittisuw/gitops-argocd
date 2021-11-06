@@ -32,10 +32,9 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # Basic Testing 
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
-# 2.Apply ArgoCR configulation file
+# 2.Apply ArgoCD configulation file
 $ git clone git@repo.blockfint.com:dev-sec-ops/argocd/argocd-app-config.git
 $ kubectl apply -f application.yaml
-
 # 3.Check Argo application : myapp-argo-application
 # 4.Test edit version to 1.0 or 1.1 or 1.2 and Check Argo application : myapp-argo-application
 vi dev/deployment.yaml 
