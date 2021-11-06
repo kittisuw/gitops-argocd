@@ -34,7 +34,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
 $ git clone git@github.com:kittisuw/gitops-argocd.git
-$ kubectl apply -f application.yaml
+$ kubectl apply -f argo-cd/application.yaml
 # 3.Check Argo application : myapp-argo-application
 # 4.Test edit version to 1.0 or 1.1 or 1.2 and Check Argo application : myapp-argo-application
 vi dev/deployment.yaml 
@@ -55,7 +55,7 @@ kubectl edit deploy myapp -n myapp
 # Cleanup 
 ```bash
 #Delete Argocd config
-kubctl delete -f application.yaml
+kubctl delete -f argo-cd/application.yaml
 #Delete all object in namesapce myapp
 kubectl delete all --all -n myapp
 #Delete namespace not wait for confirmation
