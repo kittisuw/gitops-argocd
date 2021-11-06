@@ -11,7 +11,7 @@ $ kubectl config use-context minikube
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
-# Step x - Create Simple Node.js application for build tag push to image registry
+# Step 1 - Create Simple Node.js application for build tag push to image registry
 ```bash
 $ cd app
 #Buid an tag application
@@ -23,7 +23,7 @@ docker push kittisuw/argocd-app:1.0
 docker push kittisuw/argocd-app:1.1
 docker push kittisuw/argocd-app:1.2
 ```
-# Step 1 — Install ArgoCD to Kubernetes cluster
+# Step 2 — Install ArgoCD to Kubernetes cluster
 ```bash
 # Create namespace for install Argo
 $ kubectl create namespace argocd
@@ -44,7 +44,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
-# Step 2 - Apply ArgoCD configulation file and view at ArgoCD application : myapp-argo-application
+# Step 3 - Apply ArgoCD configulation file and view at ArgoCD application : myapp-argo-application
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
@@ -52,7 +52,7 @@ $ cd gitops-argocd
 $ kubectl apply -f argo-cd/application.yaml
 # 3.Check Argo application : myapp-argo-application
 ```
-# Step 3 - Testing and view behavior at ArgoCD
+# Step 4 - Testing and view behavior at ArgoCD
 ```bash
 # 1.Test edit version
 $ vi deployments/deployment.yaml 
