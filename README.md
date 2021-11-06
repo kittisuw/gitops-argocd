@@ -1,18 +1,19 @@
-# Install ArgoCD
+# Step 0 - Install minikube for local kubernetes cluster
 ```bash
-# Install minikube for simulate k8s cluster
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
 $ sudo install minikube-darwin-amd64 /usr/local/bin/minikube
 $ minikube start
-
 #Check context
 $ kubectl config get-contexts
-
 #Set context to minikube
 $ kubectl config use-context minikube
- 
-# install ArgoCD in k8s
+```
+# Step 1 — Install ArgoCD
+```bash
+# Create namespace for install Argo
 $ kubectl create namespace argocd
+
+# Install ArgoCD in k8s
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
 # Get Argocd service name
