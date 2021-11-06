@@ -67,3 +67,4 @@ kubectl delete ns argocd --grace-period=0 --force
 #Stop minikube cluster
 minikube stop
 ```
+> Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
