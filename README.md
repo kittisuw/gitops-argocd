@@ -100,3 +100,7 @@ kubectl delete ns argocd --grace-period=0 --force
 #Stop minikube cluster
 minikube stop
 ```
+
+> https://www.youtube.com/watch?v=5gsHYdiD6v8
+> https://www.youtube.com/watch?v=MeU5_k9ssrs&t=2244s
+> 
