@@ -7,7 +7,7 @@ $ minikube start
 $ kubectl config get-contexts
 #Set context to minikube
 $ kubectl config use-context minikube
-# clone project
+# clone this repository for demo
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
