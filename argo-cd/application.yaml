@@ -9,9 +9,9 @@ spec:
   source:
     repoURL: https://github.com/kittisuw/gitops-argocd.git
     targetRevision: HEAD
-    path: app-config
-    directory: 
-      recurse: true
+    path: app-config/base
+#    directory: 
+#      recurse: true
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
