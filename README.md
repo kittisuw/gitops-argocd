@@ -54,16 +54,16 @@ kubectl edit deploy myapp -n myapp
 
 # Cleanup 
 ```bash
-#delete Argocd config
+#Delete Argocd config
 kubctl delete -f application.yaml
-#delete all object in namesapce myapp
+#Delete all object in namesapce myapp
 kubectl delete all --all -n myapp
-#delete namespace
-kubectl delete ns myapp
+#Delete namespace not wait for confirmation
+kubectl delete ns myapp --grace-period=0 --force
 #Uninstall argocd
 kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-#delete namespace argocd
-kubectl delete ns argocd
+#Delete namespace argocd not wait for confirmation
+kubectl delete ns argocd --grace-period=0 --force
 #Stop minikube cluster
 minikube stop
 ```
