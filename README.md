@@ -100,8 +100,9 @@ kubectl delete ns argocd --grace-period=0 --force
 #Stop minikube cluster
 minikube stop
 ```
-
+### Learning Resorce
 > https://www.youtube.com/watch?v=5gsHYdiD6v8   
 > https://www.youtube.com/watch?v=MeU5_k9ssrs&t=2244s   
 > https://www.youtube.com/watch?v=571cbVNahpE   
-> https://github.com/kubernetes-sigs/kustomize   
+> Kustomize: https://github.com/kubernetes-sigs/kustomize   
+> Add webhook: https://youtu.be/LhsnaeOGC-g
