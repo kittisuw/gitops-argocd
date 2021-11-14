@@ -201,11 +201,9 @@ replicas: 2 #Change to 4
 ```
 # Step 5 - Advance
 #### 5.1 - Update realtime with webhook
-Normaly ArgoCD will pull every 3 minutes by default if you would like to force update realtim from repository just set web hook to https://{argoCD}/api/webhook
+By default ArgoCD will pull desire state from git repository every 3 minutes if you would like to force update realtime just set webhook to https://{argoCD}/api/webhook
 > Add webhook: https://youtu.be/LhsnaeOGC-g
-###
-
-### 5.2 ArgoCD kustomize overlay
+#### 5.2 ArgoCD intregate with kustomize overlay
 Kustomize is Kubernetes native configuration management just patch some of config without change base yaml and using overlay technic for patch different environment with only 1 branch
 I will apply this technic with ArgoCD
 > Offial Kustomize site : https://kustomize.io 
