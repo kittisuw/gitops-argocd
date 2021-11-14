@@ -21,16 +21,17 @@ $ kubectl config use-context minikube
 ##clone this repository for demo
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 $ cd gitops-argocd
+# Directory structure
 $ tree
 ├── README.md
-├── app
+├── app #Replace with app repository Dev is owner of this repo
 │   ├── Dockerfile
 │   ├── index.js
 │   └── package.json
-├── app-config
-    ├── application.yaml
-    ├── deployment.yaml
-    └── service.yaml
+├── app-config #Replace with app-config repository DevOps is owner of this repo
+    ├── application.yaml #ArgoCD application config
+    ├── deployment.yaml #Kubernetes deployment config
+    └── service.yaml #Kubernetes service config
 ```
 # Step 1 - Create Simple Node.js application for demo
 ```bash
