@@ -37,9 +37,29 @@ $ docker push kittisuw/argocd-app:1.2
 ```bash
 # Create namespace for install Argo
 $ kubectl create namespace argocd
+$ kubectl get ns
+...
+NAME              STATUS   AGE
+argocd            Active   8s
+...
 
-# Install ArgoCD in k8s
+# Install ArgoCD in k8s and waiting all pod status is Running
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+$ kubectl get all -n argocd
+...
+ ~/gitops-argocd/app-config  master !1  kubectl get po -n argocd                                                               ok  minikube/myapp kube  15:48:53 
+NAME                                      READY   STATUS    RESTARTS   AGE
+pod/argocd-application-controller-0       1/1     Running   0          49s
+pod/argocd-dex-server-6c55787bc6-5mzv2    1/1     Running   0          50s
+pod/argocd-redis-74d8c6db65-b25sr         1/1     Running   0          50s
+pod/argocd-repo-server-6c44847cf9-tzclb   1/1     Running   0          50s
+pod/argocd-server-67b65559fb-ffqkb        0/1     Running   0          49s
+... 
+
+#Get Argocd admin init password from secret
+$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
+# you can change and delete init password
 
 #Access ArgoCD UI through port-forwarding
 $ kubectl get svc -n argocd
@@ -47,16 +67,12 @@ $ kubectl get svc -n argocd
 argocd-server           ClusterIP   10.96.227.84     <none>        80/TCP,443/TCP               35h
 ...
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
-
-# login with admin user and below token (as in documentation):
-$ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
-# you can change and delete init password
-
-# Example Set default namespace 
-#$ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
+>#Example Set default namespace    
+> $ kubectl config set-context $(kubectl config current-context) --namespace=argocd  
+ 
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
-# Step 3 - Create Kubernetes deployment,service and ArgoCD configulation and Access ArgoCD UI
+# Step 3 - Create Kubernetes deployment,service and ArgoCD application config and Access ArgoCD UI
 > view ArgoCD application : myapp-argo-application
 #### 3.1 Create Kubernetes Declarative
 ```bash
@@ -79,7 +95,7 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: kittisuw/argocd-app:1.1
+        image: kittisuw/argocd-app:1.0
         ports:
         - containerPort: 8080
 ---
@@ -100,7 +116,7 @@ spec:
 ```
 #### 3.2 - add ArgoCD configuration
 ```bash
-$ cd gitops-argocd/argo-cd
+$ cd gitops-argocd/app-config
 $ vi application.yaml
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -130,12 +146,10 @@ spec:
 ```
 #### 3.3 -  apply ArgoCD configuration
 ```bash
-# 2.Apply ArgoCD configulation file
-$ cd gitops-argocd
-$ kubectl apply -f argo-cd/application.yaml
-# 3.Check Argo application : myapp-argo-application
+#Apply ArgoCD configulation file
+$ kubectl apply -f application.yaml
 ```
-#### 3.4 -  Login ArgoCD user: admin pwd : as you get from secrete
+#### 3.4 -  Login ArgoCD https://localhost:8080 user: admin pwd : as you get from secrete and check Argo application : myapp-argo-application
 # Step 4 - Testing and view behavior at ArgoCD
 ```bash
 # 1.Test edit version
