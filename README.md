@@ -1,4 +1,8 @@
-# Step 0 - Install minikube for local kubernetes cluster
+# GitOps w/ ArgoCD a Tutorial
+# Step 0 - Prereqs
+## 0.1 - Docker
+## 0.2 - Minikube
+## Install minikube for local kubernetes cluster
 ```bash
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
 $ sudo install minikube-darwin-amd64 /usr/local/bin/minikube
@@ -11,6 +15,7 @@ $ kubectl config use-context minikube
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
+## 0.3 - 
 # Step 1 - Create Simple Node.js application for demo
 ```bash
 $ cd app
@@ -31,7 +36,7 @@ $ kubectl create namespace argocd
 # Install ArgoCD in k8s
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-# Access ArgoCD UI
+#Access ArgoCD UI through port-forwarding
 $ kubectl get svc -n argocd
 ...
 argocd-server           ClusterIP   10.96.227.84     <none>        80/TCP,443/TCP               35h
@@ -44,7 +49,8 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
-# Step 3 - Apply ArgoCD configulation file and view at ArgoCD application : myapp-argo-application
+# Step 3 - Apply ArgoCD configulation and Access ArgoCD UI
+> view ArgoCD application : myapp-argo-application
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
