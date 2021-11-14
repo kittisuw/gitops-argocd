@@ -154,7 +154,7 @@ $ kubectl apply -f application.yaml
 # 1.Test edit version
 $ vi deployment.yaml 
 ...
-image: kittisuw/argocd-app:1.0 #Edit to 1.1 or 1.2
+image: kittisuw/argocd-app:1.0 #Edit to 1.0 or 1.1
 ...
 ```
 #### 4.2 - Rename Kubernetes deployment 
