@@ -51,6 +51,7 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 # login with admin user and below token (as in documentation):
 $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 --decode && echo
 # you can change and delete init password
+
 # Example Set default namespace $ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
