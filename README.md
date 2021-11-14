@@ -336,7 +336,7 @@ spec:
       selfHeal: true
       prune: true
 ---
-# Apply ArgoCD application config
+# Apply ArgoCD application config for each environment
 $ kubectl apply -f application-dev.yaml -f application-stage.yaml -f application-prod.yaml
 ```
 
