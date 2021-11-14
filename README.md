@@ -205,6 +205,32 @@ Normaly ArgoCD will pull every 3 minutes by default if you would like to force u
 > Add webhook: https://youtu.be/LhsnaeOGC-g
 ###
 
+### 5.2 ArgoCD kustomize overlay
+Kustomize is Kubernetes native configuration management just patch some of config without edit template and using overlay technic for patch different environment
+I will apply this technic with ArgoCD
+> Offial Kustomize site : https://kustomize.io 
+```bash
+$ cd app-config
+$ mkdir argo-cd base overlays
+$ mv application.yaml ./argo-cd
+$ mv deployment.yaml service.yaml ./base
+
+# Add kuztomize config 
+$ cd base
+vi kustomization.yaml
+---
+resources:
+  - deployment.yaml
+  - service.yaml
+---
+
+# Add folder for apply different config for each environment
+$ mkdir overlays
+$ cd overlays
+$ mkdir development production staging
+ 
+```
+
 
 # Cleanup
 ```bash
