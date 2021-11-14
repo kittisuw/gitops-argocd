@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/kittisuw/gitops-argocd.git
     targetRevision: HEAD
-    path: app-config/overlays/development
+    path: ../overlays/development
 #    directory: 
 #      recurse: true
   destination: 
