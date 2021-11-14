@@ -20,6 +20,17 @@ $ kubectl config use-context minikube
 ```bash
 ##clone this repository for demo
 $ git clone git@github.com:kittisuw/gitops-argocd.git
+$ cd gitops-argocd
+$ tree
+├── README.md
+├── app
+│   ├── Dockerfile
+│   ├── index.js
+│   └── package.json
+├── app-config
+    ├── application.yaml
+    ├── deployment.yaml
+    └── service.yaml
 ```
 # Step 1 - Create Simple Node.js application for demo
 ```bash
