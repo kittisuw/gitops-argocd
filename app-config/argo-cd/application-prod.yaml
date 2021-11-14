@@ -9,9 +9,7 @@ spec:
   source:
     repoURL: https://github.com/kittisuw/gitops-argocd.git
     targetRevision: HEAD
-    path: app-config/overlays/production
-#    directory: 
-#      recurse: true
+    path: app-config/overlays/prod
   destination: 
     server: https://kubernetes.default.svc
     namespace: prod

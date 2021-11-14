@@ -204,8 +204,7 @@ replicas: 2 #Change to 4
 By default ArgoCD will pull desire state from git repository every 3 minutes if you would like to force update realtime just set webhook to https://{argoCD}/api/webhook
 > Add webhook: https://youtu.be/LhsnaeOGC-g
 #### 5.2 - ArgoCD intregate with kustomize overlay
-Kustomize is Kubernetes native configuration management just patch some of config without change base yaml and using overlay technic for patch different environment with only 1 branch
-I will apply this technic with ArgoCD
+Kustomize is Kubernetes native configuration management just patch some config without change base yaml and using overlay technic for patch different environment without sepratate config branch (In this demo I using only master branch) Currenly ArgoCD are fully support kustomize.
 > Offial Kustomize site : https://kustomize.io 
 ```bash
 $ cd app-config
@@ -225,11 +224,12 @@ resources:
 # Add folder for apply different config for each environment
 $ mkdir overlays
 $ cd overlays
-$ mkdir development production staging
+$ mkdir dev stage prod
 
-
-# Add config for test patch image verision to folder development
-# ArgoCD will looking this file for base config and patch config file
+# Add config for each environment for test pach image version
+# ArgoCD will watching kustomiation.yaml
+# repeat this step to prod, stage folder
+$ cd dev
 $ vi kustomization.yaml
 ---
 bases:
@@ -237,7 +237,7 @@ bases:
 patches:
   - image.yaml
 ---
-# patch config file content that you would like to path from base config Eg. image version
+# patch image version dev -> latest , stage -> 1.1 , prod 1.0
 $ vi image.yaml
 ---
 apiVersion: apps/v1
@@ -249,7 +249,92 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: kittisuw/argocd-app:1.1  #update image version from 1.0 to 1.1
+        image: kittisuw/argocd-app:latest  #dev -> latest , stage -> 1.1 , prod 1.0
+---
+# Deelete ArgoCD application config
+$ kubectl delete -f app-config/argo-cd/application.yaml
+
+# Create ArgoCD application for each environment
+# For this demo I using kubernetes 1 cluster 3 environment by separate namespace
+# If You are using separate cluster read ArgoCD application set
+$ cd app-config/argo-cd
+$ vi application-dev.yaml
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application-dev
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kittisuw/gitops-argocd.git
+    targetRevision: HEAD
+    path: app-config/overlays/dev
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: dev
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+---
+$ vi application-stage.yaml
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application-stage
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kittisuw/gitops-argocd.git
+    targetRevision: HEAD
+    path: app-config/overlays/stage
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: stage
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+---
+vi application-prod.yaml
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application-prod
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kittisuw/gitops-argocd.git
+    targetRevision: HEAD
+    path: app-config/overlays/prod
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: prod
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
 ---
 ```
 
