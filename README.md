@@ -1,7 +1,7 @@
 # GitOps w/ ArgoCD a Tutorial
 # Step 0 - Prereqs
 #### 0.1 - Docker Desktop
->https://docs.docker.com/engine/install
+>Install Docker Desktop: https://docs.docker.com/engine/install
 #### 0.2 - Minikube
 ```bash
 #Install minikube for local kubernetes cluster
