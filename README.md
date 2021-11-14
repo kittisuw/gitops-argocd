@@ -60,8 +60,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 > view ArgoCD application : myapp-argo-application
 #### 3.1 Create Kubernetes Declarative
 ```bash
-$ cd gitops-argocd
-$ mkdir app-config
+$ cd gitops-argocd/app-config
 $ vi deployment.yaml
 ---
 apiVersion: apps/v1
@@ -101,8 +100,7 @@ spec:
 ```
 #### 3.2 add ArgoCD configuration
 ```bash
-$ cd gitops-argocd
-$ mkdir argo-cd
+$ cd gitops-argocd/argo-cd
 $ vi application.yaml
 ---
 apiVersion: argoproj.io/v1alpha1
