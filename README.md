@@ -229,6 +229,30 @@ $ mkdir overlays
 $ cd overlays
 $ mkdir development production staging
 
+
+# Add config for test patch image verision to folder development
+# ArgoCD will looking this file for base config and patch config file
+$ vi kustomization.yaml
+---
+bases:
+  - ../../base
+patches:
+  - image.yaml
+---
+# patch config file content that you would like to path from base config Eg. image version
+$ vi image.yaml
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  template:
+    spec:
+      containers:
+      - name: myapp
+        image: kittisuw/argocd-app:1.1  #update image version from 1.0 to 1.1
+---
 ```
 
 
