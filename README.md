@@ -58,6 +58,37 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
 # Step 3 - Apply ArgoCD configulation and Access ArgoCD UI
 > view ArgoCD application : myapp-argo-application
+#### 3.1 add ArgoCD configuration
+```bash
+$ cd gitops-argocd
+$ mkdir argo-cd
+$ vi application.yaml
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: myapp-argo-application
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kittisuw/gitops-argocd.git
+    targetRevision: HEAD
+    path: app-config/base
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: myapp
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
+---
+```
 ```bash
 # 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
