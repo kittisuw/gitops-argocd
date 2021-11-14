@@ -148,29 +148,32 @@ spec:
 $ kubectl apply -f application.yaml
 ```
 #### 3.4 - Login ArgoCD https://localhost:8080 user: admin pwd : as you get from secrete and check Argo application : myapp-argo-application
-# Step 4 - Testing and view behavior at ArgoCD
+# Step 4 - Testing scenario and view behavior at ArgoCD
+#### 4.1 - Update image version
 ```bash
 # 1.Test edit version
-$ vi deployments/deployment.yaml 
+$ vi deployment.yaml 
 ...
 image: kittisuw/argocd-app:1.0 #Edit to 1.1 or 1.2
 ...
-
-# 2.Test rename deployment name
+```
+#### 4.2 - Rename Kubernetes deployment 
+```bash
 ...
 $ vi delployments/deployment.yaml
 ...
 metadata:
   name: myapp #Change to myapp-deployment
 ...
-
-# 3.Edit deployment replicas from 2 to 4 @cluster
+```
+#### 4.3 - Edit on the fire Kubernetes ReplicaSet from 2 to 4
+```bash
 $ kubectl edit deploy myapp -n myapp
 ...
 replicas: 2 #Change to 4
 ...
-
-# 4. Edit selfHeal: false and try to edit replicas
+```
+#### 4.4 Edit selfHeal: false and try to edit replicas
 $ vi argo-cd/application.yaml
 ...
 selfHeal: true #Change to false
