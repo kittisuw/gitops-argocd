@@ -188,6 +188,7 @@ replicas: 2 #Change to 4
 $ {git add .;git commit -m 'Update deployment';git push origin master}
 ```
 #### 4.4 Edit ArgoCD application config selfHeal: false and try to edit replicas
+```bash
 $ vi argo-cd/application.yaml
 ...
 selfHeal: true #Change to false
@@ -198,6 +199,13 @@ $ k edit deploy myapp -n myapp
 replicas: 2 #Change to 4
 ...
 ```
+# Step 5 - Advance
+### Update realtime with webhook
+normaly argocd will pull every 3 minutes by default if you would like to update realtim from repository just set web hook to https://{argoCD}/api/webhook
+
+###
+
+
 # Cleanup
 ```bash
 #Delete Argocd config
