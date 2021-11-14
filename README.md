@@ -56,7 +56,7 @@ $ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.p
 #$ kubectl config set-context $(kubectl config current-context) --namespace=argocd
 ```
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
-# Step 3 - Create Kubernetes deployment,service and Apply ArgoCD configulation and Access ArgoCD UI
+# Step 3 - Create Kubernetes deployment,service and ArgoCD configulation and Access ArgoCD UI
 > view ArgoCD application : myapp-argo-application
 #### 3.1 Create Kubernetes Declarative
 ```bash
