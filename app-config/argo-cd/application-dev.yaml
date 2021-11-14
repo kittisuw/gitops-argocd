@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/kittisuw/gitops-argocd.git
     targetRevision: HEAD
-    path: app-config/overlays/development
+    path: app-config/overlays/dev
   destination: 
     server: https://kubernetes.default.svc
     namespace: dev
