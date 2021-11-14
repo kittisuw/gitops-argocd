@@ -7,4 +7,4 @@ images:
 
  images:
  - name: my-app
-   newTag: ittisuw/argocd-app:1.0
+   newTag: ittisuw/argocd-app:1.1
