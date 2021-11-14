@@ -1,4 +1,4 @@
 bases:
-  - ../../base
+  - ../base
 #patches:
 #  - image.yaml
