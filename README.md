@@ -43,9 +43,10 @@ NAME              STATUS   AGE
 argocd            Active   8s
 ...
 
-# Install ArgoCD in k8s and waiting all pod status is Running
+# Install ArgoCD in k8s
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
+# Waiting all pod status is Running
 $ kubectl get po -n argocd                                                               ok  minikube/myapp kube  15:48:53 
 NAME                                      READY   STATUS    RESTARTS   AGE
 pod/argocd-application-controller-0       1/1     Running   0          49s
@@ -66,13 +67,13 @@ argocd-server           ClusterIP   10.96.227.84     <none>        80/TCP,443/TC
 ...
 $ kubectl port-forward svc/argocd-server -n argocd 8080:443
 ```
->#Example Set default namespace    
+>Example Set default namespace    
 > $ kubectl config set-context $(kubectl config current-context) --namespace=argocd  
  
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
 # Step 3 - Create Kubernetes deployment,service and ArgoCD application config and Access ArgoCD UI
 > view ArgoCD application : myapp-argo-application
-#### 3.1 Create Kubernetes Declarative
+#### 3.1 - Create Kubernetes Declarative
 ```bash
 $ cd gitops-argocd/app-config
 $ vi deployment.yaml
@@ -112,7 +113,7 @@ spec:
     targetPort: 8080
 ---
 ```
-#### 3.2 - add ArgoCD configuration
+#### 3.2 - Add ArgoCD configuration
 ```bash
 $ cd gitops-argocd/app-config
 $ vi application.yaml
@@ -142,12 +143,12 @@ spec:
       prune: true
 ---
 ```
-#### 3.3 -  apply ArgoCD configuration
+#### 3.3 - Apply ArgoCD configuration
 ```bash
 #Apply ArgoCD configulation file
 $ kubectl apply -f application.yaml
 ```
-#### 3.4 -  Login ArgoCD https://localhost:8080 user: admin pwd : as you get from secrete and check Argo application : myapp-argo-application
+#### 3.4 - Login ArgoCD https://localhost:8080 user: admin pwd : as you get from secrete and check Argo application : myapp-argo-application
 # Step 4 - Testing and view behavior at ArgoCD
 ```bash
 # 1.Test edit version
