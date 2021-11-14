@@ -72,7 +72,6 @@ $ kubectl port-forward svc/argocd-server -n argocd 8080:443
  
 > Install ArgoCD https://argo-cd.readthedocs.io/en/stable/getting_started/
 # Step 3 - Create Kubernetes deployment,service and ArgoCD application config and Access ArgoCD UI
-> view ArgoCD application : myapp-argo-application
 #### 3.1 - Create Kubernetes Declarative
 ```bash
 $ cd gitops-argocd/app-config
