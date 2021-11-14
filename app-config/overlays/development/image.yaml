@@ -1,5 +1,9 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
- images:
- - name: my-app
-   newTag: ittisuw/argocd-app:1.1
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+    spec:
+      containers:
+      - name: myapp
+        image: kittisuw/argocd-app:1.1
