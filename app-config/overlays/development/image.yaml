@@ -3,4 +3,8 @@ kind: Deployment
 metadata:
   name: myapp
 spec:
-  replicas: 4
+  template:
+    spec:
+      containers:
+      - name: myapp
+        image: kittisuw/argocd-app:1.1
