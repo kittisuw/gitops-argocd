@@ -156,6 +156,7 @@ $ vi deployment.yaml
 ...
 image: kittisuw/argocd-app:1.0 #Edit to 1.0 or 1.1
 ...
+$ {git add .;git commit -m 'Update deployment';git push origin master} 
 ```
 #### 4.2 - Rename Kubernetes deployment 
 ```bash
@@ -165,6 +166,7 @@ $ vi deployment.yaml
 metadata:
   name: myapp #Change to myapp-deployment
 ...
+$ {git add .;git commit -m 'Update deployment';git push origin master} 
 ```
 #### 4.3 - Edit on the fire Kubernetes ReplicaSet from 2 to 4
 ```bash
@@ -172,8 +174,9 @@ $ kubectl edit deploy myapp -n myapp
 ...
 replicas: 2 #Change to 4
 ...
+$ {git add .;git commit -m 'Update deployment';git push origin master}
 ```
-#### 4.4 Edit selfHeal: false and try to edit replicas
+#### 4.4 Edit ArgoCD application config selfHeal: false and try to edit replicas
 $ vi argo-cd/application.yaml
 ...
 selfHeal: true #Change to false
