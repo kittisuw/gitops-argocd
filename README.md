@@ -160,7 +160,7 @@ image: kittisuw/argocd-app:1.0 #Edit to 1.0 or 1.1
 #### 4.2 - Rename Kubernetes deployment 
 ```bash
 ...
-$ vi delployments/deployment.yaml
+$ vi deployment.yaml
 ...
 metadata:
   name: myapp #Change to myapp-deployment
@@ -178,7 +178,7 @@ $ vi argo-cd/application.yaml
 ...
 selfHeal: true #Change to false
 ...
-$ kubectl apply -f argocd/application.yaml
+$ kubectl apply -f application.yaml
 $ k edit deploy myapp -n myapp
 ...
 replicas: 2 #Change to 4
