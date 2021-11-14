@@ -15,7 +15,7 @@ $ kubectl config use-context minikube
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
 #### 0.3 - Public/Private image registry
-> in this demo I using dockerhub
+> in this demo I using dockerhub : https://hub.docker.com
 #### 0.4 - Repo used for tutorial
 ```bash
 ##clone this repository for demo
