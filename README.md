@@ -151,7 +151,6 @@ $ kubectl apply -f application.yaml
 # Step 4 - Testing scenario and view behavior at ArgoCD
 #### 4.1 - Update image version
 ```bash
-# 1.Test edit version
 $ vi deployment.yaml 
 ...
 image: kittisuw/argocd-app:1.0 #Edit to 1.0 or 1.1
