@@ -1,17 +1,17 @@
 # GitOps w/ ArgoCD a Tutorial
 # Step 0 - Prereqs
-## 0.1 - Docker
-## 0.2 - Minikube
-## Install minikube for local kubernetes cluster
+### 0.1 - Docker
+### 0.2 - Minikube
 ```bash
+#Install minikube for local kubernetes cluster
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
 $ sudo install minikube-darwin-amd64 /usr/local/bin/minikube
 $ minikube start
-#Check context
+##Check context
 $ kubectl config get-contexts
-#Set context to minikube
+##Set context to minikube
 $ kubectl config use-context minikube
-# clone this repository for demo
+##clone this repository for demo
 $ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
