@@ -1,8 +1,8 @@
 # GitOps w/ ArgoCD a Tutorial
 # Step 0 - Prereqs
-#### 0.1 - Install Docker Desktop
+#### 0.1 - Docker Desktop
 >https://docs.docker.com/engine/install
-#### 0.2 - Install Minikube
+#### 0.2 - Minikube
 ```bash
 #Install minikube for local kubernetes cluster
 $ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
