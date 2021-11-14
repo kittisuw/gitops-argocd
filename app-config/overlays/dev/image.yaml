@@ -7,4 +7,4 @@ spec:
     spec:
       containers:
       - name: myapp
-        image: kittisuw/argocd-app:latest
+        image: kittisuw/argocd-app:1.2
