@@ -98,7 +98,7 @@ spec:
     targetPort: 8080
 ---
 ```
-#### 3.2 add ArgoCD configuration
+#### 3.2 - add ArgoCD configuration
 ```bash
 $ cd gitops-argocd/argo-cd
 $ vi application.yaml
@@ -114,7 +114,7 @@ spec:
   source:
     repoURL: https://github.com/kittisuw/gitops-argocd.git
     targetRevision: HEAD
-    path: app-config/base
+    path: app-config
   destination: 
     server: https://kubernetes.default.svc
     namespace: myapp
@@ -128,13 +128,14 @@ spec:
       prune: true
 ---
 ```
+#### 3.3 -  apply ArgoCD configuration
 ```bash
-# 1.Login ArgoCD user: admin pwd : as you get from secrete
 # 2.Apply ArgoCD configulation file
 $ cd gitops-argocd
 $ kubectl apply -f argo-cd/application.yaml
 # 3.Check Argo application : myapp-argo-application
 ```
+#### 3.4 -  Login ArgoCD user: admin pwd : as you get from secrete
 # Step 4 - Testing and view behavior at ArgoCD
 ```bash
 # 1.Test edit version
