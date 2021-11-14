@@ -12,12 +12,15 @@ $ minikube start
 $ kubectl config get-contexts
 ##Set context to minikube
 $ kubectl config use-context minikube
-##clone this repository for demo
-$ git clone git@github.com:kittisuw/gitops-argocd.git
 ```
 > Get started minikube https://minikube.sigs.k8s.io/docs/start/
 #### 0.3 - Public/Private image repository
 > in this demo I using dockerhub
+### 0.4 - Repo used for tutorial
+```bash
+##clone this repository for demo
+$ git clone git@github.com:kittisuw/gitops-argocd.git
+```
 # Step 1 - Create Simple Node.js application for demo
 ```bash
 $ cd app
