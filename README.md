@@ -46,9 +46,7 @@ argocd            Active   8s
 # Install ArgoCD in k8s and waiting all pod status is Running
 $ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-$ kubectl get all -n argocd
-...
- ~/gitops-argocd/app-config  master !1  kubectl get po -n argocd                                                               ok  minikube/myapp kube  15:48:53 
+$ kubectl get po -n argocd                                                               ok  minikube/myapp kube  15:48:53 
 NAME                                      READY   STATUS    RESTARTS   AGE
 pod/argocd-application-controller-0       1/1     Running   0          49s
 pod/argocd-dex-server-6c55787bc6-5mzv2    1/1     Running   0          50s
