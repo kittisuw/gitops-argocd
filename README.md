@@ -200,7 +200,7 @@ replicas: 2 #Change to 4
 ...
 ```
 # Step 5 - Advance
-#### 5.1 - Update realtime with webhook
+#### 5.1 - Update realtime desire state with webhook
 By default ArgoCD will pull desire state from git repository every 3 minutes if you would like to force update realtime just set webhook to https://{argoCD}/api/webhook
 > Add webhook: https://youtu.be/LhsnaeOGC-g
 #### 5.2 - ArgoCD intregate with kustomize overlay
