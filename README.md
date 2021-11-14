@@ -200,9 +200,9 @@ replicas: 2 #Change to 4
 ...
 ```
 # Step 5 - Advance
-### Update realtime with webhook
-normaly argocd will pull every 3 minutes by default if you would like to update realtim from repository just set web hook to https://{argoCD}/api/webhook
-
+#### 5.1 - Update realtime with webhook
+Normaly ArgoCD will pull every 3 minutes by default if you would like to force update realtim from repository just set web hook to https://{argoCD}/api/webhook
+> Add webhook: https://youtu.be/LhsnaeOGC-g
 ###
 
 
@@ -226,4 +226,3 @@ minikube stop
 > https://www.youtube.com/watch?v=MeU5_k9ssrs&t=2244s   
 > https://www.youtube.com/watch?v=571cbVNahpE   
 > Kustomize: https://github.com/kubernetes-sigs/kustomize   
-> Add webhook: https://youtu.be/LhsnaeOGC-g
