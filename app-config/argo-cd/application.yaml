@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/kittisuw/gitops-argocd.git
     targetRevision: HEAD
-    path: app-config
+    path: app-config/development
 #    directory: 
 #      recurse: true
   destination: 

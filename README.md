@@ -206,7 +206,7 @@ Normaly ArgoCD will pull every 3 minutes by default if you would like to force u
 ###
 
 ### 5.2 ArgoCD kustomize overlay
-Kustomize is Kubernetes native configuration management just patch some of config without edit template and using overlay technic for patch different environment
+Kustomize is Kubernetes native configuration management just patch some of config without change base yaml and using overlay technic for patch different environment with only 1 branch
 I will apply this technic with ArgoCD
 > Offial Kustomize site : https://kustomize.io 
 ```bash
@@ -228,7 +228,7 @@ resources:
 $ mkdir overlays
 $ cd overlays
 $ mkdir development production staging
- 
+
 ```
 
 
