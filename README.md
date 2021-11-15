@@ -33,6 +33,7 @@ $ tree
     ├── deployment.yaml #Kubernetes deployment config
     └── service.yaml #Kubernetes service config
 ```
+> ArgoCD best practise : https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices/
 # Step 1 - Create Simple Node.js application for demo
 ```bash
 $ cd app
