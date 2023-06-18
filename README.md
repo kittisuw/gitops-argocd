@@ -1,22 +1,10 @@
 # GitOps w/ ArgoCD a Tutorial
 # Step 0 - Prereqs
-#### 0.1 - Docker Desktop
->Install Docker Desktop: https://docs.docker.com/engine/install
-#### 0.2 - Minikube
-```bash
-#Install minikube for local kubernetes cluster
-$ curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64
-$ sudo install minikube-darwin-amd64 /usr/local/bin/minikube
-$ minikube start
-##Check context
-$ kubectl config get-contexts
-##Set context to minikube
-$ kubectl config use-context minikube
-```
-> Get started minikube https://minikube.sigs.k8s.io/docs/start/
-#### 0.3 - Public/Private image registry
+#### 0.1 - Kind for running a Kubernetes cluster locally, using Docker containers as cluster nodes
+> Install kind: https://github.com/kittisuw/Kubernetes/blob/main/local-development/kind
+#### 0.2 - Public/Private image registry
 > in this demo I using dockerhub : https://hub.docker.com
-#### 0.4 - Repo used for tutorial
+#### 0.3 - Repo used for tutorial
 ```bash
 ##clone this repository for demo
 $ git clone git@github.com:kittisuw/gitops-argocd.git
@@ -33,7 +21,7 @@ $ tree
     ├── deployment.yaml #Kubernetes deployment config
     └── service.yaml #Kubernetes service config
 ```
-> ArgoCD best practise : https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices/
+> ArgoCD best practice: https://argo-cd.readthedocs.io/en/stable/user-guide/best_practices/
 # Step 1 - Create Simple Node.js application for demo
 ```bash
 $ cd app
