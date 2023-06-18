@@ -1,6 +1,6 @@
 # GitOps w/ ArgoCD a Tutorial
 # Step 0 - Prereqs
-#### 0.1 - Kind for running a Kubernetes cluster locally, using Docker containers as cluster nodes
+#### 0.1 - [Kind](https://github.com/kittisuw/Kubernetes/tree/main/local-development/kind) for running a Kubernetes cluster locally, using Docker containers as cluster nodes
 > Install kind: https://github.com/kittisuw/Kubernetes/blob/main/local-development/kind
 #### 0.2 - Public/Private image registry
 > in this demo I using dockerhub : https://hub.docker.com
