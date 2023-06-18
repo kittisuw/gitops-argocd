@@ -335,8 +335,8 @@ kubectl delete ns myapp --grace-period=0 --force
 kubectl delete -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 #Delete namespace argocd not wait for confirmation
 kubectl delete ns argocd --grace-period=0 --force
-#Stop minikube cluster
-minikube stop
+#Delete kind cluster
+kind delete cluster --name {Cluster name}
 ```
 ### Learning Resorce
 > https://www.youtube.com/watch?v=5gsHYdiD6v8   
