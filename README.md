@@ -5,7 +5,6 @@
 > in this demo I using dockerhub : https://hub.docker.com
 #### 0.3 - Repo used for tutorial
 ```bash
-├── README.md
 ├── app #Replace with app repository Dev is owner of this repo
 │   ├── Dockerfile
 │   ├── index.js
