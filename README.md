@@ -5,11 +5,6 @@
 > in this demo I using dockerhub : https://hub.docker.com
 #### 0.3 - Repo used for tutorial
 ```bash
-##clone this repository for demo
-$ git clone git@github.com:kittisuw/gitops-argocd.git
-$ cd gitops-argocd
-# Directory structure
-$ tree
 ├── README.md
 ├── app #Replace with app repository Dev is owner of this repo
 │   ├── Dockerfile
